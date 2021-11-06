@@ -30,10 +30,10 @@ class ytdl():
 
     def download(self, vfmt):
         if vfmt == '':
-            cmd = '{} -o dl/%(title)s.mkv'.format(bin_youtubedl, self.url)
+            cmd = '{} {} -o dl/%(title)s.mkv'.format(bin_youtubedl, self.url)
         else:
             cmd = '{} -f {}+bestaudio --merge-output-format mkv {} -o dl/%(title)s.mkv'.format(bin_youtubedl, vfmt, self.url)
-        os.system(cmd)
+        return os.system(cmd)
 
 
 if __name__ == '__main__':
@@ -46,4 +46,8 @@ if __name__ == '__main__':
         d = ytdl(url)
         bestVideo = d.get_format()
         print('select vidoe format: {}'.format(bestVideo))
-        d.download(bestVideo)
+        
+        while True:
+            status = d.download(bestVideo)
+            if status == 0:
+                break
