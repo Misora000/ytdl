@@ -17,12 +17,17 @@ class ytdl():
         for l in result.stdout.decode('ascii').split('\n'):
             if l.find('mp4') > 0:
                 allFmt.append(l.split(' ')[0])
+            if l.find('webm') > 0:
+                allFmt.append(l.split(' ')[0])
 
         # prefer video format:
-        #   315: 4k
-        #   299: 1080, 60fps
-        #   137: 1080
-        for v in ['315', '299', '137']:
+        #   315: 2160p, 60fps
+        #   313: 2160p, 30fps
+        #   308: 1440p, 60fps
+        #   271: 1440p, 30fps
+        #   299: 1080p, 60fps
+        #   137: 1080p, 30fps
+        for v in ['315', '313', '308', '271', '299', '137']:
             if v in allFmt:
                 return v
         
