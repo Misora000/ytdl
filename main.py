@@ -1,7 +1,6 @@
 import os, sys
 import subprocess
 
-# bin_youtubedl = 'youtube-dl.exe'
 bin_youtubedl = 'yt-dlp.exe'
 
 class ytdl():
