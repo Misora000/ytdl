@@ -2,6 +2,7 @@ import os, sys
 import subprocess
 
 bin_youtubedl = 'yt-dlp.exe'
+dst = 'E:/動畫/YoutubeDL'
 
 class ytdl():
     url = ''
@@ -35,9 +36,9 @@ class ytdl():
 
     def download(self, vfmt):
         if vfmt == '':
-            cmd = '{} {} -o dl/%(title)s.mkv'.format(bin_youtubedl, self.url)
+            cmd = '{} {} -o {}/%(title)s.mkv'.format(bin_youtubedl, self.url, dst)
         else:
-            cmd = '{} -f {}+bestaudio --merge-output-format mkv {} -o dl/%(title)s.mkv'.format(bin_youtubedl, vfmt, self.url)
+            cmd = '{} -f {}+bestaudio --merge-output-format mkv {} -o {}/%(title)s.mkv'.format(bin_youtubedl, vfmt, self.url, dst)
         return os.system(cmd)
 
 
